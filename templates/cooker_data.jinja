@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ user.first_name }}'s Dishes</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .card {
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        .card-text {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .btn {
+            margin-top: 10px;
+        }
+        .delete-btn {
+            margin-top: 10px;
+        }
+        .arrow-link {
+            left: 20px;
+            top: 50%;
+            color: #007bff;
+            font-size: 24px;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url "catalog:index" %}" class="arrow-link">&#9664;</a>
+    <div class="container">
+        <h1>{{ user.first_name }}'s Dishes</h1>
+        <a href="{% url 'catalog:create_dish' %}" class="btn btn-primary">Create New Dish</a>
+        <div class="row">
+            {% for dish in dishes %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ dish.image.url }}" class="card-img-top" alt="{{ dish.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ dish.name }}</h5>
+                        <p class="card-text">{{ dish.description }}</p>
+                        <p class="card-text"><strong>Price:</strong> ${{ dish.price }}</p>
+                        <p class="card-text"><strong>Type:</strong> {{ dish.dish_type }}</p>
+                        <a href="{% url 'catalog:update_dish' dish.id %}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'catalog:delete_dish' dish.id %}" class="btn btn-danger delete-btn">Delete</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Coding By CodingNepal - www.codingnepalweb.com -->
+<html>
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link href="{% static 'css/login.css' %}" rel="stylesheet">
+</head>
+
+<body>
+  <div class="wrapper">
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <h2>Login</h2>
+      <div class="input-field">
+        <input type="text" name="username" required>
+        <label>Enter your email</label>
+      </div>
+      <div class="input-field">
+        <input type="password" name="password" required>
+        <label>Enter your password</label>
+      </div>
+      <input type="hidden" name="next" value="{{ next }}">
+      <button type="submit">Log In</button>
+      <p><a href="{% url 'catalog:guest_page' %}">Enter as a guest</a></p>
+    </form>
+  </div>
+</body>
+</html>
