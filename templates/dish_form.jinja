@@ -63,7 +63,7 @@
         <h1>Update Dish</h1>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ dish_form.as_p }}
+            {{ form }}
             <button type="submit" class="btn btn-primary">Update</button>
             <a href="{% url 'catalog:user_dishes' dish.id %}" class="btn btn-secondary">Cancel</a>
         </form>

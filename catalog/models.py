@@ -15,24 +15,26 @@ class Cook(AbstractUser):
 
 class Dish(models.Model):
     DISH_TYPE_CHOICES = (
-        ('Appetizer', 'Appetizer'),
-        ('Main Course', 'Main Course'),
-        ('Dessert', 'Dessert'),
-        ('Beverage', 'Beverage'),
+        ("Appetizer", "Appetizer"),
+        ("Main Course", "Main Course"),
+        ("Dessert", "Dessert"),
+        ("Beverage", "Beverage"),
     )
     name = models.CharField(max_length=255)
     description = models.TextField()
     image = models.ImageField(upload_to="images/", null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     dish_type = models.CharField(max_length=20, choices=DISH_TYPE_CHOICES)
-    cooks = models.ManyToManyField(Cook, related_name='dishes')
+    cooks = models.ManyToManyField(Cook, related_name="dishes")
 
     def __str__(self):
         return self.name
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Dish, on_delete=models.CASCADE, related_name='comments', null=True)
+    post = models.ForeignKey(
+        Dish, on_delete=models.CASCADE, related_name="comments", null=True
+    )
     name = models.CharField(max_length=50, null=True)
     email = models.EmailField(null=True)
     text_comment = models.TextField(null=True)
