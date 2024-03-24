@@ -1,15 +1,10 @@
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Q
 from django.shortcuts import redirect, render, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import (
     View,
     DetailView,
     ListView,
-    CreateView,
-    FormView,
-    DeleteView,
     UpdateView,
 )
 
@@ -32,11 +27,6 @@ class IndexView(LoginRequiredMixin, ListView):
         else:
             return Dish.objects.all()
 
-    # class GuestIndexView(LoginRequiredMixin, ListView):
-    #     model = Dish
-    #     template_name = 'guest_page.jinja'
-    #     # context_object_name = 'dishes'
-    #
     def get_queryset(self):
         query = self.request.GET.get("query")
         if query:
@@ -91,14 +81,6 @@ class BeverageListView(ListView):
     template_name = "beverages.jinja"
     context_object_name = "beverage"
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['query'] = self.request.GET.get('query', '')
-    #     return context
-
-    # def get_queryset(self):
-    #     return Beverages.objects.all()
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["beverages"] = self.get_queryset()
@@ -121,19 +103,6 @@ class UserDishesView(View):
         return render(request, self.template_name, {"user": user, "dishes": dishes})
 
 
-# class CreateDishView(View):
-#     def get(self, request):
-#         form = DishForm()
-#         return render(request, 'create_dish.jinja', {'form': form})
-#
-#     def post(self, request):
-#         form = DishForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('catalog:index')
-#         return render(request, 'create_dish.jinja', {'form': form})
-
-
 class CreateDishView(LoginRequiredMixin, View):
     def get(self, request):
         form = DishForm(initial={"cooks": [request.user.id]})
@@ -149,44 +118,12 @@ class CreateDishView(LoginRequiredMixin, View):
         return render(request, "create_dish.jinja", {"form": form})
 
 
-# class UpdateDishView(View):
-#     template_name = 'update_dish.jinja'
-#
-#     def get(self, request, dish_id):
-#         dish = get_object_or_404(Dish, pk=dish_id)
-#         form = DishForm(instance=dish)
-#         return render(request, self.template_name, {'form': form, 'dish': dish})
-#
-#     def post(self, request, dish_id):
-#         dish = get_object_or_404(Dish, pk=dish_id)
-#         form = DishForm(request.POST, request.FILES, instance=dish)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('catalog:index')
-#         else:
-#             return render(request, self.template_name, {'form': form, 'dish': dish})
-
-
 class UpdateDishView(UpdateView):
     template_name = "dish_form.jinja"
 
     form_class = DishForm
     model = Dish
     success_url = reverse_lazy("catalog:index")
-
-    # def get(self, request, dish_id):
-    #     dish = get_object_or_404(Dish, pk=dish_id)
-    #     form = DishForm(instance=dish)
-    #     return render(request, self.template_name, {'form': form, 'dish': dish})
-    #
-    # def post(self, request, dish_id):
-    #     dish = get_object_or_404(Dish, pk=dish_id)
-    #     form = DishForm(request.POST, request.FILES, instance=dish)
-    #     if form.is_valid():
-    #         form.save()
-    #         return redirect('catalog:user_dishes', user_id=request.user.id)
-    #     else:
-    #         return render(request, self.template_name, {'form': form, 'dish': dish})
 
 
 class DeleteDishView(View):
