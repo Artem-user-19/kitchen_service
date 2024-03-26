@@ -1,5 +1,7 @@
 from django.test import TestCase
-from catalog.models import DishType, Cook, Dish, Comment, Beverages
+
+from catalog.models import DishType, Dish, Comment, Beverages
+
 from django.contrib.auth.models import User
 
 

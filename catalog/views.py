@@ -1,6 +1,13 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.shortcuts import redirect, render, get_object_or_404
+
+from django.shortcuts import (
+    redirect,
+    render,
+    get_object_or_404
+)
+
 from django.urls import reverse_lazy
+
 from django.views.generic import (
     View,
     DetailView,
@@ -24,8 +31,7 @@ class IndexView(LoginRequiredMixin, ListView):
             return Dish.objects.filter(name__icontains=query) | Dish.objects.filter(
                 description__icontains=query
             )
-        else:
-            return Dish.objects.all()
+        return Dish.objects.all()
 
     def get_queryset(self):
         query = self.request.GET.get("query")
@@ -33,11 +39,10 @@ class IndexView(LoginRequiredMixin, ListView):
             return Dish.objects.filter(name__icontains=query) | Dish.objects.filter(
                 description__icontains=query
             )
-        else:
-            return Dish.objects.all()
+        return Dish.objects.all()
 
 
-class GuestPageView(View):
+class GuestPageView(DetailView):
     template_name = "guest_page.jinja"
 
     def get(self, request):
@@ -46,8 +51,7 @@ class GuestPageView(View):
             dishes = Dish.objects.filter(name__icontains=query) | Dish.objects.filter(
                 description__icontains=query
             )
-        else:
-            dishes = Dish.objects.all()
+        dishes = Dish.objects.all()
         return render(request, self.template_name, {"dishes": dishes})
 
 
@@ -94,7 +98,7 @@ class BeverageListView(ListView):
         return queryset
 
 
-class UserDishesView(View):
+class UserDishesView(DetailView):
     template_name = "cooker_data.jinja"
 
     def get(self, request, user_id):
