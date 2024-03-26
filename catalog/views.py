@@ -17,7 +17,6 @@ from django.views.generic import (
 
 from catalog.forms import CommentForm, DishForm
 from catalog.models import Dish, Beverages, Cook
-from django.contrib.auth import logout
 
 
 class IndexView(LoginRequiredMixin, ListView):
@@ -140,10 +139,4 @@ class DeleteDishView(View):
     def post(self, request, dish_id):
         dish = get_object_or_404(Dish, pk=dish_id)
         dish.delete()
-        return redirect("catalog:index")
-
-
-class LogoutView(View):
-    def get(self, request):
-        logout(request)
         return redirect("catalog:index")
