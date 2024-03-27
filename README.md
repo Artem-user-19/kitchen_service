@@ -1,4 +1,4 @@
-# restaurant kitchen service
+# Restaurant kitchen service
 
 1.Created main page with search system and possibility to enter on other page, clicking on "View Details" button, where we can see more description about the product and also we can leave comments.
 
@@ -7,3 +7,5 @@
 3.Changes was committed and pushed on git
 
 4.Use "python manage.py runserver" command to run project, but before check you venv, it shoulod be activated. If he wasn`t activated, for windows use "python3 -m venv venv" "venv/Scripts/activate", if MacOS "python3.9 -m venv venv" "source venv/bin/activate"
+
+![kachok](https://github.com/Artem-user-19/kitchen_service/assets/109797006/6dcef575-fc74-4c17-8617-5531d5a53aa2)
