@@ -1,5 +1,6 @@
 # created by virtualenv auto
-../ Restaurant Kitchen Service/.idea
+.idea
 venv
 **__pycache__
 media
+db.sqlite3
