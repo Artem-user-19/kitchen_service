@@ -37,3 +37,19 @@ You have login page
 And use
 - Username: `user`
 - Password: `user12345`
+# How to install progect
+- Switch to `develop` branch
+- Then push `<> code` button and copy link
+- Open terminal and write `git clone` and paste your copied link
+- Enter to code redactor program and open this folder with it
+- Check `venv`, if it doesn't activated, write `python3 -m venv venv` and then `venv/Scripts/activate` for windows, for MacOS `python3.9 -m venv venv` and `source venv/bin/activate`
+- Write `python manage.py runserver` and push on `http://127.0.0.1:8000/`
+# Some information about my DB
+## Dish DB
+![Знімок екрана 2024-03-27 174842](https://github.com/Artem-user-19/kitchen_service/assets/109797006/dc58e60c-5441-42d6-855c-9821fb762bf5)
+## Cook DB
+![Знімок екрана 2024-03-27 174955](https://github.com/Artem-user-19/kitchen_service/assets/109797006/bf7547f1-fbce-4560-b061-fb639bb69a20)
+![Знімок екрана 2024-03-27 175023](https://github.com/Artem-user-19/kitchen_service/assets/109797006/0ad2603a-1266-415c-94f9-e12dfd304cc7)
+## Comment DB
+![Знімок екрана 2024-03-27 175114](https://github.com/Artem-user-19/kitchen_service/assets/109797006/ffbb4569-25b2-4488-8a06-780cdcc5c468)
+![Знімок екрана 2024-03-27 175147](https://github.com/Artem-user-19/kitchen_service/assets/109797006/fd1c580c-4e62-42a7-9d5f-9df1adb27acb)
