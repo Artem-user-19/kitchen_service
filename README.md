@@ -1,2 +1,2 @@
 ﻿# Restaurant_kitchen_service
- `code`
+## How does this site works?
