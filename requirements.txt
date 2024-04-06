@@ -3,7 +3,7 @@ black==24.3.0
 click==8.1.7
 colorama==0.4.6
 dj-database-url==2.1.0
-Django==5.0.2
+Django==5.0.1
 gunicorn==21.2.0
 mypy-extensions==1.0.0
 packaging==24.0
