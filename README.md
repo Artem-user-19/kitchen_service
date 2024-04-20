@@ -35,8 +35,8 @@ Nothing special, this window deletes our dish
 You have login page
 ![Знімок екрана 2024-03-27 173045](https://github.com/Artem-user-19/kitchen_service/assets/109797006/ded3c0e1-f1d1-4878-93b7-ce126bf48734)
 And use
-- Username: `user`
-- Password: `user12345`
+- Username: `Artix_2`
+- Password: `artix1406`
 # How to install progect
 - Switch to `develop` branch
 - Then push `<> code` button and copy link
