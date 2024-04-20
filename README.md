@@ -54,4 +54,4 @@ And use
 ![Знімок екрана 2024-03-27 175114](https://github.com/Artem-user-19/kitchen_service/assets/109797006/ffbb4569-25b2-4488-8a06-780cdcc5c468)
 ![Знімок екрана 2024-03-27 175147](https://github.com/Artem-user-19/kitchen_service/assets/109797006/fd1c580c-4e62-42a7-9d5f-9df1adb27acb)
 ## Link to site
-[GitHub Pages](https://pages.github.com/)
+[https://cook-service.onrender.com](https://cook-service.onrender.com)
